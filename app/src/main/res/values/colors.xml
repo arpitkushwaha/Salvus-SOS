@@ -10,4 +10,5 @@
     <color name="colorGreen">#A6CDCA</color>
     <color name="colorDarkGreen">#79B19A</color>
     <color name="colorSkin">#EFB975</color>
+    <color name="translucent_black">#80000000</color>
 </resources>
