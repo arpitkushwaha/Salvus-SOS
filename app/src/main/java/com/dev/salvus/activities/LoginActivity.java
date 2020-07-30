@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     preferences.setPhone(phone);
                     preferences.setPassword(password);
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
 
                 }
                 catch(Exception e) {
@@ -52,10 +53,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
             }
         });
-
-
 
     }
 }
