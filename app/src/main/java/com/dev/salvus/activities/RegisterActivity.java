@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -40,10 +40,12 @@ public class RegisterActivity extends AppCompatActivity {
         binding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
+
+
 
         
     }
