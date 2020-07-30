@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         preferences = new Preferences(this);
-        if(!preferences.getEmail().equals("")) {
+        if(!preferences.getPhone().equals("")) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
