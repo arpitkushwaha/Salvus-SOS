@@ -16,13 +16,13 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="285dp"
-                android:layout_height="285dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_login" />
+                app:srcCompat="@drawable/me_policeman" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="57dp"
-                android:text="SALVUS"
+                android:text="Be Safe\nBe Secure"
                 android:textColor="@color/colorBlue"
                 android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="parent"
