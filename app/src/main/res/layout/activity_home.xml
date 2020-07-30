@@ -24,6 +24,41 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/me_circle" />
 
+            <ImageView
+                android:id="@+id/policecar"
+                android:layout_width="223dp"
+                android:layout_height="125dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.308"
+                app:srcCompat="@drawable/me_policecar" />
+
+            <ImageView
+                android:id="@+id/ambulance"
+                android:layout_width="203dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.558"
+                app:srcCompat="@drawable/me_ambulance" />
+
+            <ImageView
+                android:id="@+id/firetruck"
+                android:layout_width="212dp"
+                android:layout_height="121dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.562"
+                app:srcCompat="@drawable/me_firetruck" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
