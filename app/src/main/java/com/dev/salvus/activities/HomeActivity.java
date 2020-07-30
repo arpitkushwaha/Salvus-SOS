@@ -58,6 +58,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                preferences.setPhone("");
+                preferences.setPassword("");
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finish();
+
+            }
+        });
+
         binding.feelingUnsafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
