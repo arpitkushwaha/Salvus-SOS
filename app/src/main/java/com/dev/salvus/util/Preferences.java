@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 public class Preferences {
 
-
     Context context;
     String name;
     String phone;

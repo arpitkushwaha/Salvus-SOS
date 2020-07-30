@@ -10,7 +10,7 @@ import com.dev.salvus.activities.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int TIME_OUT = 1800;
+    private static int TIME_OUT = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
