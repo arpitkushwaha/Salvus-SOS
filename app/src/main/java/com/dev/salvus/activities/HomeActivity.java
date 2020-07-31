@@ -7,6 +7,8 @@ import android.app.ActionBar;
 import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.KeyguardManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -173,6 +175,14 @@ public class HomeActivity extends AppCompatActivity {
             Log.e(TAG,"isMyServiceRunning() Exception : "+e);
         }
         return false;
+    }
+
+    private void foregroundService()
+    {
+
+        Intent intent = new Intent(HomeActivity.this, MyService.class);
+        intent.setAction(MyService.ACTION_START_FOREGROUND_SERVICE);
+        startService(intent);
     }
 
 }
