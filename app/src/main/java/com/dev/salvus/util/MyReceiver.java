@@ -30,7 +30,7 @@ public class MyReceiver extends BroadcastReceiver {
 //            wasScreenOn = true;
 //            ++count;
 
-        } else if(count==4){
+        } else if(count==3){
 
             Log.e("LOB", "userpresent");
             Log.e("LOB", "wasScreenOn" + wasScreenOn);
