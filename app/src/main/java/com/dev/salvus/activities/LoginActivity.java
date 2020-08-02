@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     Preferences preferences;
-    String phone,password;
+    String phone,password,id;
     RequestQueue requestQueue;
     private static final String TAG = "LoginActivity";
     @Override
@@ -53,48 +53,51 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try{
 
-//                    phone = binding.inputPhone.getText().toString();
-//                    password = binding.inputPassword.getText().toString();
-//
-//                    String url = "localhost:3000/emergency";
-//                    Map<String, String> jsonParams = new HashMap<String, String>();
-//
-//                    jsonParams.put("user", phone);
-//                    jsonParams.put("lat", "user");
-//                    jsonParams.put("lon", "pass");
-//                    jsonParams.put("emergency", "unsafe");
-//
-//                    JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
-//
-//                            new JSONObject(jsonParams),
-//                            new Response.Listener<JSONObject>() {
-//                                @Override
-//                                public void onResponse(JSONObject response) {
-//                                    Toast.makeText(LoginActivity.this, "Login Successful "+response, Toast.LENGTH_SHORT).show();
-//                                }
-//                            },
-//                            new Response.ErrorListener() {
-//                                @Override
-//                                public void onErrorResponse(VolleyError error) {
-//                                    //   Handle Error
-//                                }
-//                            }) {
-//                        @Override
-//                        public Map<String, String> getHeaders() throws AuthFailureError {
-//                            HashMap<String, String> headers = new HashMap<String, String>();
-//                            headers.put("Content-Type", "application/json; charset=utf-8");
-//                            headers.put("User-agent", System.getProperty("http.agent"));
-//                            return headers;
-//                        }
-//                    };
-//                    requestQueue.add(postRequest);
+                    phone = binding.inputPhone.getText().toString();
+                    password = binding.inputPassword.getText().toString();
 
+                    String url = "https://team-ajax.herokuapp.com/login";
+                    Map<String, String> jsonParams = new HashMap<String, String>();
 
-                    preferences.setPhone(phone);
-                    preferences.setPassword(password);
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    finish();
+                    jsonParams.put("username", phone);
+                    jsonParams.put("password", password);
+                    JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
 
+                            new JSONObject(jsonParams),
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try{
+                                            id = response.getJSONObject("success").get("_id").toString();
+                                            preferences.setId(id);
+                                            preferences.setPhone(phone);
+                                            preferences.setPassword(password);
+                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                            finish();
+
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        //Toast.makeText(LoginActivity.this, "Error : "+e, Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    //Toast.makeText(LoginActivity.this, "ErrorResponse : "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json; charset=utf-8");
+                            headers.put("X-Requested-With","XMLHttpRequest");
+                            return headers;
+                        }
+                    };
+                    requestQueue.add(postRequest);
                 }
                 catch(Exception e) {
                     Log.e(TAG,"Login Button Clicked : "+e);
@@ -106,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
             }
         });
 

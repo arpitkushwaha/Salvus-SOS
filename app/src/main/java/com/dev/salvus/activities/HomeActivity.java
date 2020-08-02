@@ -116,7 +116,7 @@ public class HomeActivity extends AppCompatActivity {
                 String url = "https://team-ajax.herokuapp.com/emergency";
                 Map<String, String> jsonParams = new HashMap<String, String>();
 
-                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("user", preferences.getId());
                 jsonParams.put("lat", latitude);
                 jsonParams.put("lon", longitude);
                 jsonParams.put("emergency", "police");
@@ -156,7 +156,7 @@ public class HomeActivity extends AppCompatActivity {
                 String url = "https://team-ajax.herokuapp.com/emergency";
                 Map<String, String> jsonParams = new HashMap<String, String>();
 
-                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("user", preferences.getId());
                 jsonParams.put("lat", latitude);
                 jsonParams.put("lon", longitude);
                 jsonParams.put("emergency", "medical");
@@ -198,7 +198,7 @@ public class HomeActivity extends AppCompatActivity {
                 String url = "https://team-ajax.herokuapp.com/emergency";
                 Map<String, String> jsonParams = new HashMap<String, String>();
 
-                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("user", preferences.getId());
                 jsonParams.put("lat", latitude);
                 jsonParams.put("lon", longitude);
                 jsonParams.put("emergency", "fire");
@@ -254,7 +254,7 @@ public class HomeActivity extends AppCompatActivity {
                     String url = "https://team-ajax.herokuapp.com/emergency";
                     Map<String, String> jsonParams = new HashMap<String, String>();
 
-                    jsonParams.put("user", "5f26450959b8e90017838530");
+                    jsonParams.put("user", preferences.getId());
                     jsonParams.put("lat", latitude);
                     jsonParams.put("lon", longitude);
                     jsonParams.put("emergency", "unsafe");
@@ -292,7 +292,7 @@ public class HomeActivity extends AppCompatActivity {
                     String url = "https://team-ajax.herokuapp.com/emergency";
                     Map<String, String> jsonParams = new HashMap<String, String>();
 
-                    jsonParams.put("user", "5f26450959b8e90017838530");
+                    jsonParams.put("user", preferences.getId());
                     jsonParams.put("lat", latitude);
                     jsonParams.put("lon", longitude);
                     jsonParams.put("emergency", "unsafe");
@@ -363,6 +363,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 dialog.findViewById(R.id.logout_button).setOnClickListener(v1 -> {
                     preferences.setPhone("");
+                    preferences.setId("");
                     preferences.setPassword("");
                     startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                     finish();
