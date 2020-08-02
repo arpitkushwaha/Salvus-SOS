@@ -25,17 +25,17 @@ At the same time we also have taken utmost care to not violate the privacy of In
 
 ## Screenshots :
 
-<br><img src="screenshots/1.PNG" height="400"><br><br>
+<br><img src="screenshots/1.png" height="400"><br><br>
 
-<br><img src="screenshots/2.PNG" height="400"><br><br>
+<br><img src="screenshots/2.png" height="400"><br><br>
 
-<br><img src="screenshots/3.PNG" height="400"><br><br>
+<br><img src="screenshots/3.png" height="400"><br><br>
 
-<br><img src="screenshots/4.PNG" height="400"><br><br>
+<br><img src="screenshots/4.png" height="400"><br><br>
 
-<br><img src="screenshots/5.PNG" height="400"><br><br>
+<br><img src="screenshots/5.png" height="400"><br><br>
 
-<br><img src="screenshots/6.PNG" height="400"><br><br>
+<br><img src="screenshots/6.png" height="400"><br><br>
 
  
   
