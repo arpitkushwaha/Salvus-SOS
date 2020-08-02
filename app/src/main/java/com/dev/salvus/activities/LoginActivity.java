@@ -61,6 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     jsonParams.put("username", phone);
                     jsonParams.put("password", password);
+
+                    Snackbar.make(binding.parentView,"Wait...", BaseTransientBottomBar.LENGTH_LONG).show();
+
                     JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
 
                             new JSONObject(jsonParams),

@@ -127,7 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Snackbar.make(binding.parentview,"Your report has been filed. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                Snackbar.make(binding.parentview,"Your report has been filed. "+latitude+" : "+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
                             }
                         },
                         new Response.ErrorListener() {
@@ -168,14 +168,14 @@ public class HomeActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
 
-                                Snackbar.make(binding.parentview,"Help is on the way. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                Snackbar.make(binding.parentview,"Help is on the way. "+latitude+" : "+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 //   Handle Error
-                                Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                //Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
                             }
                         }) {
                     @Override
@@ -209,14 +209,14 @@ public class HomeActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Snackbar.make(binding.parentview,"Authorities are informed. Help will reach you soon."+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                Snackbar.make(binding.parentview,"Authorities are informed. Help will reach you soon."+latitude+" : "+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 //   Handle Error
-                                Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                //Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
                             }
                         }) {
                     @Override
@@ -265,14 +265,14 @@ public class HomeActivity extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
-                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered contact details. "+latitude+" : "+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
                                 }
                             },
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     //   Handle Error
-                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                    //Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
                                 }
                             }) {
                         @Override
@@ -303,14 +303,14 @@ public class HomeActivity extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
-                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered contact details. "+latitude+" : "+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
                                 }
                             },
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     //   Handle Error
-                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                    //Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
                                 }
                             }) {
                         @Override
@@ -443,7 +443,6 @@ public class HomeActivity extends AppCompatActivity {
                                     longitude = location.getLongitude()+"";
                                     preferences.setLatitude(latitude);
                                     preferences.setLongitude(longitude);
-                                    Snackbar.make(binding.parentview,"Latitude:"+latitude+"\nLongitude:"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
 
                                 }
                             }
