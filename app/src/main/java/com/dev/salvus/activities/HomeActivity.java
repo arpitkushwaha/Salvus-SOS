@@ -27,6 +27,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.dev.salvus.MainActivity;
 import com.dev.salvus.R;
 import com.dev.salvus.databinding.ActivityHomeBinding;
@@ -49,7 +56,11 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -57,6 +68,7 @@ public class HomeActivity extends AppCompatActivity {
     Preferences preferences;
     FusedLocationProviderClient mFusedLocationClient;
     private String latitude,longitude;
+    RequestQueue requestQueue;
     private static final String TAG = "HomeActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +82,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        requestQueue = Volley.newRequestQueue(this);
 
 
         //Runtime Permissions
@@ -99,21 +112,122 @@ public class HomeActivity extends AppCompatActivity {
         binding.policecar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(binding.parentview,"Your report has been filed.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+                String url = "https://team-ajax.herokuapp.com/emergency";
+                Map<String, String> jsonParams = new HashMap<String, String>();
+
+                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("lat", latitude);
+                jsonParams.put("lon", longitude);
+                jsonParams.put("emergency", "police");
+
+                JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+
+                        new JSONObject(jsonParams),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Snackbar.make(binding.parentview,"Your report has been filed. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //   Handle Error
+                                Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+                        headers.put("X-Requested-With","XMLHttpRequest");
+                        return headers;
+                    }
+                };
+                requestQueue.add(postRequest);
             }
         });
 
         binding.ambulance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(binding.parentview,"Help is on the way.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+                String url = "https://team-ajax.herokuapp.com/emergency";
+                Map<String, String> jsonParams = new HashMap<String, String>();
+
+                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("lat", latitude);
+                jsonParams.put("lon", longitude);
+                jsonParams.put("emergency", "medical");
+
+                JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+
+                        new JSONObject(jsonParams),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+                                Snackbar.make(binding.parentview,"Help is on the way. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //   Handle Error
+                                Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+                        headers.put("X-Requested-With","XMLHttpRequest");
+                        return headers;
+                    }
+                };
+                requestQueue.add(postRequest);
             }
         });
+
 
         binding.firetruck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(binding.parentview,"Authorities are informed. Help will reach you soon.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+                String url = "https://team-ajax.herokuapp.com/emergency";
+                Map<String, String> jsonParams = new HashMap<String, String>();
+
+                jsonParams.put("user", "5f26450959b8e90017838530");
+                jsonParams.put("lat", latitude);
+                jsonParams.put("lon", longitude);
+                jsonParams.put("emergency", "fire");
+
+                JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+
+                        new JSONObject(jsonParams),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Snackbar.make(binding.parentview,"Authorities are informed. Help will reach you soon."+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //   Handle Error
+                                Snackbar.make(binding.parentview,"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                            }
+                        }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+                        headers.put("X-Requested-With","XMLHttpRequest");
+                        return headers;
+                    }
+                };
+                requestQueue.add(postRequest);
             }
         });
 
@@ -136,11 +250,78 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
                 dialog.findViewById(R.id.reportnow_button).setOnClickListener(v1 -> {
-                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+                    String url = "https://team-ajax.herokuapp.com/emergency";
+                    Map<String, String> jsonParams = new HashMap<String, String>();
+
+                    jsonParams.put("user", "5f26450959b8e90017838530");
+                    jsonParams.put("lat", latitude);
+                    jsonParams.put("lon", longitude);
+                    jsonParams.put("emergency", "unsafe");
+
+                    JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+
+                            new JSONObject(jsonParams),
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    //   Handle Error
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json; charset=utf-8");
+                            headers.put("X-Requested-With","XMLHttpRequest");
+                            return headers;
+                        }
+                    };
+                    requestQueue.add(postRequest);
+
                 });
 
                 dialog.findViewById(R.id.reportlater_button).setOnClickListener(v1 -> {
-                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+                    String url = "https://team-ajax.herokuapp.com/emergency";
+                    Map<String, String> jsonParams = new HashMap<String, String>();
+
+                    jsonParams.put("user", "5f26450959b8e90017838530");
+                    jsonParams.put("lat", latitude);
+                    jsonParams.put("lon", longitude);
+                    jsonParams.put("emergency", "unsafe");
+
+                    JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+
+                            new JSONObject(jsonParams),
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Please fill the form sent to your registered email address. "+latitude+":"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    //   Handle Error
+                                    Snackbar.make(dialog.findViewById(R.id.parent_dialogview),"Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json; charset=utf-8");
+                            headers.put("X-Requested-With","XMLHttpRequest");
+                            return headers;
+                        }
+                    };
+                    requestQueue.add(postRequest);
                 });
 
                 dialog.show();
@@ -259,7 +440,10 @@ public class HomeActivity extends AppCompatActivity {
                                 } else {
                                     latitude = location.getLatitude()+"";
                                     longitude = location.getLongitude()+"";
+                                    preferences.setLatitude(latitude);
+                                    preferences.setLongitude(longitude);
                                     Snackbar.make(binding.parentview,"Latitude:"+latitude+"\nLongitude:"+longitude, BaseTransientBottomBar.LENGTH_LONG).show();
+
                                 }
                             }
                         }

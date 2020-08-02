@@ -9,6 +9,8 @@ public class Preferences {
     String name;
     String phone;
     String password;
+    String latitude;
+    String longitude;
 
     public Preferences(Context context) {
         this.context = context;
@@ -60,5 +62,37 @@ public class Preferences {
         edit.putString("password",password);
         edit.commit();
         this.password = password;
+    }
+
+    public String getLatitude() {
+
+        SharedPreferences pref = context.getSharedPreferences("Preferences",Context.MODE_PRIVATE);
+        latitude = pref.getString("latitude","");
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+
+        SharedPreferences pref = context.getSharedPreferences("Preferences",Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit=pref.edit();
+        edit.putString("latitude",latitude);
+        edit.commit();
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+
+        SharedPreferences pref = context.getSharedPreferences("Preferences",Context.MODE_PRIVATE);
+        longitude = pref.getString("longitude","");
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+
+        SharedPreferences pref = context.getSharedPreferences("Preferences",Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit=pref.edit();
+        edit.putString("longitude",longitude);
+        edit.commit();
+        this.longitude = longitude;
     }
 }

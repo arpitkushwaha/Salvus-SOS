@@ -20,69 +20,64 @@
                 android:layout_width="28dp"
                 android:layout_height="29dp"
                 android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/me_more" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/me_circle" />
-
-            <ImageView
-                android:id="@+id/policecar"
-                android:layout_width="223dp"
-                android:layout_height="125dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.308"
-                app:srcCompat="@drawable/me_policecar" />
-
-            <ImageView
-                android:id="@+id/ambulance"
-                android:layout_width="203dp"
-                android:layout_height="120dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.558"
-                app:srcCompat="@drawable/me_ambulance" />
-
-            <ImageView
-                android:id="@+id/firetruck"
-                android:layout_width="212dp"
-                android:layout_height="121dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.562"
-                app:srcCompat="@drawable/me_firetruck" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/feeling_unsafe"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="62dp"
-                android:background="@drawable/bg_button_blue"
-                android:text="Feeling Unsafe"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:layout_weight="4"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/policecar"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:layout_height="120dp"
+                    android:background="@color/colorBlueDark"
+                    app:srcCompat="@drawable/me_policecar" />
+
+                <ImageView
+                    android:id="@+id/firetruck"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorBlueDark"
+                    android:layout_margin="10dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="4"
+                    app:srcCompat="@drawable/me_firetruck" />
+
+                <ImageView
+                    android:id="@+id/ambulance"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorBlueDark"
+                    android:layout_margin="10dp"
+                    android:layout_height="120dp"
+                    app:srcCompat="@drawable/me_ambulance" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/feeling_unsafe"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_button_blue"
+                    android:text="Feeling Unsafe"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView"
